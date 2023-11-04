@@ -20,7 +20,6 @@ form {
     margin: 0 auto;
     padding: 20px;
     background-color: #2f3136;
-    border: 1px solid #40444b;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -33,6 +32,11 @@ select,
 textarea,
 input {
     font-size: 1rem;
+    border: 3px solid #FFFFFF00;
+}
+
+select {
+    padding-right: 10px;
 }
 
 input[type="text"],
@@ -43,7 +47,7 @@ select {
     padding: 10px 10px;
     background-color: #40444b;
     color: #ffffff;
-    border: 1px solid #36393f;
+    /* border: 1px solid #36393f; */
     border-radius: 5px;
     outline: none;
 }
@@ -65,7 +69,7 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-    border: 1px solid #7289da;
+    border: 3px solid #7289da;
 }
 
 input[type="submit"] {
