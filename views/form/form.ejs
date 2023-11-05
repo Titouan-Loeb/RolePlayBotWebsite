@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Creation Form</title>
     <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
 
 <body>
-    <h1>Character Creation Form</h1>
+    <h1>Créer un nouveau personnage</h1>
     <form id="characterForm" method="POST">
+        <% if (owner) { %>
         <div class="field">
-            <label for="name">Nom :</label>
+            <label for="name">Pseudo discord :</label>
+            <input type="text" id="name" name="name" value="<%= owner %>" required readonly>
+        </div>
+        <% } %>
+        <div class="field">
+            <label for="name">Nom du personnage:</label>
             <input type="text" id="name" name="name" required>
         </div>
         <div class="field">
@@ -176,7 +183,6 @@
             </div>
         </div>
 
-        <!-- Add similar select fields for the other attributes -->
 
         <input type="submit" value="Submit">
     </form>
