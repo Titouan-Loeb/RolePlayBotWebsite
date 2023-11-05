@@ -30,3 +30,5 @@ To run the bot run the following command
 ```bash
 npm start
 ```
+
+The server is running on the port 3000
