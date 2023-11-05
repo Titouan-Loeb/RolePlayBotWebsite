@@ -5,12 +5,12 @@ const saveCharacter = async (req, res) => {
   const body = req.body;
   const newCharacter = await new Character({
     _id: new mongoose.Types.ObjectId(),
-    owner: "test",
+    owner: body.owner,
     characterName: body.name,
     imageURL: body.imageURL,
     description: body.description,
     po: body.gold,
-    pv: 7,
+    pv: body.pv,
     competences: {
       force: body.force,
       mentir_convaincre: body.mentir_convaincre,
@@ -25,22 +25,20 @@ const saveCharacter = async (req, res) => {
   });
 
   const sum =
-    newCharacter.force +
-    newCharacter.mentir_convaincre +
-    newCharacter.intelligence +
-    newCharacter.courir_sauter +
-    newCharacter.perception +
-    newCharacter.connaissance +
-    newCharacter.dexterite +
-    newCharacter.combat +
-    newCharacter.discretion;
+    parseInt(body.force) +
+    parseInt(body.mentir_convaincre) +
+    parseInt(body.intelligence) +
+    parseInt(body.courir_sauter) +
+    parseInt(body.perception) +
+    parseInt(body.connaissance) +
+    parseInt(body.dexterite) +
+    parseInt(body.combat) +
+    parseInt(body.discretion);
 
   if (sum !== 45) {
-    res.render("form", {
-      error:
-        "La somme des compétences doit être égale à 45, la votre et de " +
-        sum +
-        ".",
+    res.render("form/form", {
+      owner: newCharacter.owner,
+      error: `La somme des compétences doit être égale à 45, la votre et de ${sum}`,
     });
     return;
   }
@@ -52,7 +50,12 @@ const saveCharacter = async (req, res) => {
         `Character '${newCharacter.characterName}' created by '${newCharacter.owner}' was saved`
       );
     })
-    .catch(console.error);
+    .catch((error) => {
+      console.error(error);
+      res.render("form/error");
+      return;
+    });
+  res.render("form/success");
 };
 
 module.exports = saveCharacter;

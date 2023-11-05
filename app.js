@@ -42,10 +42,9 @@ app.get("/form", (req, res) => {
     res.render("form/errorPath");
 		return;
   }
-  res.render("form/form", { owner });
+  res.render("form/form", { owner, error: "" });
 });
 app.post("/form", (req, res) => {
-  const formData = req.body;
   saveCharacter(req, res);
 });
 
