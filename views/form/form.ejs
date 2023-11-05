@@ -5,29 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Creation Form</title>
     <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="css/error.css">
 </head>
 
 <body>
     <h1>Créer un nouveau personnage</h1>
     <form id="characterForm" method="POST">
-        <% if (owner) { %>
-        <div class="field">
-            <label for="name">Pseudo discord :</label>
-            <input type="text" id="name" name="name" value="<%= owner %>" required readonly>
+        <% if (error) { %>
+        <div>
+            <h4 class="error"><%= error %></h4>
         </div>
         <% } %>
+        <div class="field">
+            <label for="name">Pseudo discord :</label>
+            <input type="text" id="owner" name="owner" value="<%= owner %>" required readonly>
+        </div>
         <div class="field">
             <label for="name">Nom du personnage:</label>
             <input type="text" id="name" name="name" required>
         </div>
         <div class="field">
             <label for="description">Description :</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            <textarea id="description" name="description" rows="4"></textarea>
         </div>
         <div class="selectors">
             <div class="field">
                 <label for="gold">Pièces d'or :</label>
                 <input type="number" id="gold" name="gold" min="0" required>
+            </div>
+            <div class="field">
+                <label for="gold">Points de vie :</label>
+                <input type="number" id="pv" name="pv" value="7" required readonly>
             </div>
             <div class="field">
                 <label for="force">Force :</label>
@@ -182,8 +190,6 @@
                 </select>
             </div>
         </div>
-
-
         <input type="submit" value="Submit">
     </form>
 
