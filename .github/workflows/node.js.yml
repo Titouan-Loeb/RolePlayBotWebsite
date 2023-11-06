@@ -18,6 +18,11 @@ jobs:
       matrix:
         node-version: [18.x]
 
+    env:
+      DEV: "true"
+      DATABASE_URL: ${{ secrets.DATABASE_TOKEN }}
+      DATABASE_NAME: ${{ vars.DATABASE_NAME }}
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}

@@ -7,6 +7,8 @@ const saveCharacter = require("./public/js/components/form.js");
 const { connect, connection } = require("mongoose");
 const { db } = require("./public/js/schema/characters.schema.js");
 const database_token = process.env.DATABASE_TOKEN;
+const database_name = process.env.DEV_MODE ? process.env.DEV_DATABASE_NAME : process.env.DATABASE_NAME;
+const database_url = database_token + database_name
 
 /* ---------- SETUP ---------- */
 app.use(express.static("public"));
@@ -17,7 +19,7 @@ app.use("/js", express.static(__dirname + "public/js"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-connect(database_token).catch(console.error);
+connect(database_url).catch(console.error);
 
 /* ---------- EVENTS ---------- */
 const dbEvents = connection;
