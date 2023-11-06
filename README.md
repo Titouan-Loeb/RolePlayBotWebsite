@@ -2,7 +2,7 @@
 
 ## About
 
-This is the website that is host the bot
+This project goes with the discord Role Play discord bot that I am developping. It will have what it is not feasable within the discord bot.
 
 ## Setup
 
